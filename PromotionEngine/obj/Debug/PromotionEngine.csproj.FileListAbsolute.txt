@@ -68,4 +68,3 @@ C:\promotion-engine\promotion-engine\PromotionEngine\obj\Debug\PromotionEngine.c
 C:\promotion-engine\promotion-engine\PromotionEngine\obj\Debug\PromotionEngine.csproj.CopyComplete
 C:\promotion-engine\promotion-engine\PromotionEngine\obj\Debug\PromotionEngine.dll
 C:\promotion-engine\promotion-engine\PromotionEngine\obj\Debug\PromotionEngine.pdb
-C:\promotion-engine\promotion-engine\PromotionEngine\obj\Debug\PromotionEngine.csprojAssemblyReference.cache

@@ -5,7 +5,7 @@ namespace PromotionEngine.Models
 {
     public class PromotionRequestModel
     {
-        PromotionRequestModel()
+        public PromotionRequestModel()
         {
             CartItems = new List<CartItemModel>();
         }
