@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PromotionEngineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemName" />
+    </Key>
+    <Property Name="ItemName" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ItemPrice" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Promotion">
+    <Key>
+      <PropertyRef Name="PromotionId" />
+    </Key>
+    <Property Name="PromotionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PromotionName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PromotionFormulas" Relationship="Self.FK__Promotion__Promo__3B75D760" FromRole="Promotion" ToRole="PromotionFormula" />
+  </EntityType>
+  <EntityType Name="PromotionFormula">
+    <Key>
+      <PropertyRef Name="PromotionFormulaId" />
+    </Key>
+    <Property Name="PromotionFormulaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PromotionId" Type="Int32" Nullable="false" />
+    <Property Name="ItemQty" Type="Int32" Nullable="false" />
+    <Property Name="ItemNames" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PromotionValue" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Promotion" Relationship="Self.FK__Promotion__Promo__3B75D760" FromRole="PromotionFormula" ToRole="Promotion" />
+    <Property Name="FormulaDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Promotion__Promo__3B75D760">
+    <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+    <End Role="PromotionFormula" Type="Self.PromotionFormula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Promotion">
+        <PropertyRef Name="PromotionId" />
+      </Principal>
+      <Dependent Role="PromotionFormula">
+        <PropertyRef Name="PromotionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PromotionEngineEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="Promotions" EntityType="Self.Promotion" />
+    <EntitySet Name="PromotionFormulas" EntityType="Self.PromotionFormula" />
+    <AssociationSet Name="FK__Promotion__Promo__3B75D760" Association="Self.FK__Promotion__Promo__3B75D760">
+      <End Role="Promotion" EntitySet="Promotions" />
+      <End Role="PromotionFormula" EntitySet="PromotionFormulas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

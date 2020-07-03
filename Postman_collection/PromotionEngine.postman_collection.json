@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "85f7b753-b01a-4d59-9654-96c66edfd903",
+		"name": "PromotionEngine",
+		"description": "PromotionEngine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:44359/api/AddPromotion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"PromotionName\": \"Promotion 3\",\r\n    \"PromotionFormulas\": [\r\n        { \r\n            \"ItemQty\": 1,\r\n            \"ItemNames\": \"A&B&C\",\r\n            \"PromotionValue\": 30,\r\n            \"FormulaDescription\": \"A & B for 30\"\r\n        },\r\n        { \r\n            \"ItemQty\": 2,\r\n            \"ItemNames\": \"D\",\r\n            \"PromotionValue\": 11,\r\n            \"FormulaDescription\": \"2 of D's for 10\"\r\n        } \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44359/api/AddPromotion",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44359",
+					"path": [
+						"api",
+						"AddPromotion"
+					]
+				},
+				"description": "Add new promotion into database"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44359/api/GetPromotion/5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44359/api/GetPromotion/5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44359",
+					"path": [
+						"api",
+						"GetPromotion",
+						"5"
+					]
+				},
+				"description": "Retrieve database promotion detail"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44359/api/ApplyPromotion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"PromotionId\":5,\r\n\"CartItems\":[\r\n    {\r\n    \"ItemName\":\"A\",\r\n    \"ItemQty\":10\r\n    },\r\n   {\r\n    \"ItemName\":\"B\",\r\n    \"ItemQty\":15\r\n    },\r\n   {\r\n    \"ItemName\":\"C\",\r\n    \"ItemQty\":25\r\n    },\r\n   {\r\n    \"ItemName\":\"D\",\r\n    \"ItemQty\":35\r\n    } \r\n]\r\n}\r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44359/api/ApplyPromotion",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44359",
+					"path": [
+						"api",
+						"ApplyPromotion"
+					]
+				},
+				"description": "Apply promotion "
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

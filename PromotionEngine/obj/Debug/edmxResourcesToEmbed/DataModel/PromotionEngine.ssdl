@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PromotionEngineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemName" />
+    </Key>
+    <Property Name="ItemName" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ItemPrice" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Promotion">
+    <Key>
+      <PropertyRef Name="PromotionId" />
+    </Key>
+    <Property Name="PromotionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PromotionName" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PromotionFormula">
+    <Key>
+      <PropertyRef Name="PromotionFormulaId" />
+    </Key>
+    <Property Name="PromotionFormulaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PromotionId" Type="int" Nullable="false" />
+    <Property Name="ItemQty" Type="int" Nullable="false" />
+    <Property Name="ItemNames" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="PromotionValue" Type="int" Nullable="false" />
+    <Property Name="FormulaDescription" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK__Promotion__Promo__3B75D760">
+    <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+    <End Role="PromotionFormula" Type="Self.PromotionFormula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Promotion">
+        <PropertyRef Name="PromotionId" />
+      </Principal>
+      <Dependent Role="PromotionFormula">
+        <PropertyRef Name="PromotionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PromotionEngineModelStoreContainer">
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PromotionFormula" EntityType="Self.PromotionFormula" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Promotion__Promo__3B75D760" Association="Self.FK__Promotion__Promo__3B75D760">
+      <End Role="Promotion" EntitySet="Promotion" />
+      <End Role="PromotionFormula" EntitySet="PromotionFormula" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

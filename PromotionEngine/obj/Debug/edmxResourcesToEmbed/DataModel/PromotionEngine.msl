@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PromotionEngineModelStoreContainer" CdmEntityContainer="PromotionEngineEntities">
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="PromotionEngineModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Promotions">
+      <EntityTypeMapping TypeName="PromotionEngineModel.Promotion">
+        <MappingFragment StoreEntitySet="Promotion">
+          <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+          <ScalarProperty Name="PromotionName" ColumnName="PromotionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PromotionFormulas">
+      <EntityTypeMapping TypeName="PromotionEngineModel.PromotionFormula">
+        <MappingFragment StoreEntitySet="PromotionFormula">
+          <ScalarProperty Name="FormulaDescription" ColumnName="FormulaDescription" />
+          <ScalarProperty Name="PromotionFormulaId" ColumnName="PromotionFormulaId" />
+          <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+          <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+          <ScalarProperty Name="ItemNames" ColumnName="ItemNames" />
+          <ScalarProperty Name="PromotionValue" ColumnName="PromotionValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
